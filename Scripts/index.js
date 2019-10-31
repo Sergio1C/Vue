@@ -1,8 +1,9 @@
-﻿import Vue from "vue/dist/vue.js";
+﻿import vuetify from '../Scripts/vuetify';
+import Vue from 'vue';
 
-var App = new Vue({
-    el: '#app',
+new Vue({
+    vuetify,
     data: {
-        msg: "Hello from VUE dddddd"
+        msg: "Hello"
     }
-});
+}).$mount('#app');

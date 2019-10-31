@@ -13,10 +13,17 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
+
     <link rel="stylesheet" href="~/css/site.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+
 </head>
+
+
 <body>
     @*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -72,13 +79,7 @@
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    <environment include="Development">
-        <script src="~/Scripts/index.js" asp-append-version="true"></script>
-    </environment>
-
-    <environment include="Development">
-        <script src="~/js/dist/app.js" asp-append-version="true"></script>
-    </environment>
+   <script src="~/js/dist/app.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

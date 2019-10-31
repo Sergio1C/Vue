@@ -11,11 +11,14 @@ module.exports = {
         filename: '[name].js'
     },
     devtool: 'source-map',
-    mode: 'development',
-    //optimization:
-    //{
-    //    minimize: false
-    //},
+    mode: /*'production'*/'development',
+
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.js'
+        }
+    },
+
     module: {
         // modules contains Special compilation rules 
         rules: [
@@ -33,7 +36,33 @@ module.exports = {
                 use: [ //  use css loader to load css file
                     { loader: "css-loader" }
                 ]
+            },
+            //for vuetify
+            {
+                test: /\.s(c|a)ss$/,
+                use: [
+                    'vue-style-loader',
+                    'css-loader',
+                    {
+                        loader: 'sass-loader',
+                        // Requires sass-loader@^7.0.0
+                        options: {
+                            implementation: require('sass'),
+                            fiber: require('fibers'),
+                            indentedSyntax: true // optional
+                        }
+                        // Requires sass-loader@^8.0.0
+                        //options: {
+                        //    implementation: require('sass'),
+                        //    sassOptions: {
+                        //        fiber: require('fibers'),
+                        //        indentedSyntax: true // optional
+                        //    },
+                        //},
+                    }
+                ]
             }
+
         ]
     }
 };
