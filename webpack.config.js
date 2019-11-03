@@ -1,5 +1,8 @@
 /// <binding BeforeBuild='Run - Development' />
 //https://ourtechroom.com/tech/integrating-vuejs-in-aspnetcore-application/
+
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
     entry: {
         // This index.js is main file which should include all other modules 
@@ -29,7 +32,10 @@ module.exports = {
                 // load this .js file using babel loader so as to make it compactible with any browser
                 loader: 'babel-loader'
             },
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
+            },
             {
                 // Ask webpack to check: If this file ends with .css, then apply some transforms 
                 test: /\.css$/,
@@ -61,8 +67,15 @@ module.exports = {
                         //},
                     }
                 ]
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
 
         ]
-    }
+    },
+    plugins: [
+        new VueLoaderPlugin()
+    ]
 };
