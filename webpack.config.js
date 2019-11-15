@@ -1,12 +1,13 @@
 /// <binding BeforeBuild='Run - Development' />
 //https://ourtechroom.com/tech/integrating-vuejs-in-aspnetcore-application/
 
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
     entry: {
         // This index.js is main file which should include all other modules 
-        app: ['./scripts/index.js']
+        //app: ['./scripts/index.js']
+        app: ['./scripts/app.js']
     },
     output: {
         // this says : Compiled file goes to [name].js ie. app.js in my case
@@ -71,8 +72,16 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+            },
+            //for use decorators in a ".ts" files there
+            {
+                test: /\.ts$/,
+                loader: "ts-loader",
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                    transpileOnly: true
+                }
             }
-
         ]
     },
     plugins: [
