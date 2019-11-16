@@ -10,6 +10,10 @@
     <None Remove="Scripts\components\Custom.vue" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TypeScriptCompile Remove="shims-vue.d.ts" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

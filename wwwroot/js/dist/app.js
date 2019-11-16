@@ -715,7 +715,7 @@ var CustomComponent = /** @class */ (function (_super) {
         configurable: true
     });
     __decorate([
-        Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])({ type: Number, default: 100, required: false, validator: function (t) { return t > 0; } })
+        Object(vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Prop"])({ type: Number, default: 101, required: false, validator: function (t) { return t > 0; } })
     ], CustomComponent.prototype, "number", void 0);
     CustomComponent = __decorate([
         vue_property_decorator__WEBPACK_IMPORTED_MODULE_0__["Component"]
@@ -13452,7 +13452,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     el: '#app',
     components: { Custom: _components_Custom_vue__WEBPACK_IMPORTED_MODULE_1__["default"] },
     data: {
-        msg: "Hello"
+        msg: "Hello Vue"
     }
 });
 

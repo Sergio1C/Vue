@@ -11,6 +11,6 @@ new Vue({
     el: '#app',
     components: { Custom },
     data: {
-        msg: "Hello"
+        msg: "Здесь приложение App.js"
     }
 });

@@ -15,7 +15,7 @@
                 this.title = "Title"
             }
 
-            @Prop({ type: Number, default: 100, required: false, validator: function (t: Number) { return t > 0; } }) number;
+            @Prop({ type: Number, default: 101, required: false, validator: function (t: Number) { return t > 0; } }) number;
             get gettitle() {
                 return this.title;
             }

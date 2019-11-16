@@ -8,6 +8,6 @@ new Vue({
     el: '#app',
     components: { Custom: Custom },
     data: {
-        msg: "Hello"
+        msg: "Здесь приложение App.js"
     }
 });
