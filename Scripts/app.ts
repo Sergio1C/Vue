@@ -1,15 +1,10 @@
 ﻿
 import Vue from 'vue';
-//import Vuetify from 'vuetify';
-//import Vuetify from '../Scripts/vuetify';
-//import "vuetify/dist/vuetify.css";
-import Custom from './components/Custom.vue'
-
-//Vue.use(Vuetify);
+import Counter from './components/Counter.vue'
 
 new Vue({
     el: '#app',
-    components: { Custom },
+    components: { Counter },
     data: {
         msg: "Hello"
     }
