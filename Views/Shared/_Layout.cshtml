@@ -23,9 +23,7 @@
 
 </head>
 
-
 <body>
-
     <div class="container">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
@@ -33,6 +31,7 @@
         </main>
     </div>
 
+</body>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -52,8 +51,7 @@
         </script>
     </environment>
 
-   <script src="~/js/dist/app.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
-</body>
+
 </html>

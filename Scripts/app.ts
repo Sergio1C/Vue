@@ -6,6 +6,6 @@ new Vue({
     el: '#app',
     components: { Counter },
     data: {
-        msg: "Hello"
+        msg: "Здесь приложение App.js"
     }
 });
