@@ -11,7 +11,7 @@ module.exports = {
     },
     output: {
         // this says : Compiled file goes to [name].js ie. app.js in my case
-        path: __dirname + "/wwwroot/js/dist/",
+        path: __dirname + "/wwwroot/dist/js/",
         filename: '[name].js'
     },
     devtool: 'source-map',
@@ -19,7 +19,8 @@ module.exports = {
 
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue: 'vue/dist/vue.js',
+            components: __dirname + "/scripts/components"
         }
     },
 
@@ -40,8 +41,9 @@ module.exports = {
             {
                 // Ask webpack to check: If this file ends with .css, then apply some transforms 
                 test: /\.css$/,
-                use: [ //  use css loader to load css file
-                    { loader: "css-loader" }
+                use: [
+                    'vue-style-loader',
+                    'css-loader'
                 ]
             },
             //for vuetify
@@ -49,7 +51,7 @@ module.exports = {
                 test: /\.s(c|a)ss$/,
                 use: [
                     'vue-style-loader',
-                    'css-loader',
+                    'css-loader',                  
                     {
                         loader: 'sass-loader',
                         // Requires sass-loader@^7.0.0
@@ -58,14 +60,6 @@ module.exports = {
                             fiber: require('fibers'),
                             indentedSyntax: true // optional
                         }
-                        // Requires sass-loader@^8.0.0
-                        //options: {
-                        //    implementation: require('sass'),
-                        //    sassOptions: {
-                        //        fiber: require('fibers'),
-                        //        indentedSyntax: true // optional
-                        //    },
-                        //},
                     }
                 ]
             },
@@ -83,7 +77,16 @@ module.exports = {
                 }
             }
         ]
+
     },
+    //devServer: {
+    //    hot: true,
+    //    contentBase: './dist/js',
+    //    proxy: {
+    //        '': 'http://localhost:64236'
+    //    }
+    //},
+    //watch: true,
     plugins: [
         new VueLoaderPlugin()
     ]
