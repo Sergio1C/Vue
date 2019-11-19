@@ -40,29 +40,29 @@ module.exports = {
             },
             {
                 // Ask webpack to check: If this file ends with .css, then apply some transforms 
-                test: /\.css$/,
+                test: /\.(s)css$/,
                 use: [
                     'vue-style-loader',
                     'css-loader'
                 ]
             },
             //for vuetify
-            {
-                test: /\.s(c|a)ss$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',                  
-                    {
-                        loader: 'sass-loader',
-                        // Requires sass-loader@^7.0.0
-                        options: {
-                            implementation: require('sass'),
-                            fiber: require('fibers'),
-                            indentedSyntax: true // optional
-                        }
-                    }
-                ]
-            },
+            //{
+            //    test: /\.s(c|a)ss$/,
+            //    use: [
+            //        'vue-style-loader',
+            //        'css-loader',                  
+            //        {
+            //            loader: 'sass-loader',
+            //            // Requires sass-loader@^7.0.0
+            //            options: {
+            //                implementation: require('sass'),
+            //                fiber: require('fibers'),
+            //                indentedSyntax: true // optional
+            //            }
+            //        }
+            //    ]
+            //},
             {
                 test: /\.vue$/,
                 loader: 'vue-loader'
