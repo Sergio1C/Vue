@@ -6,12 +6,14 @@
 <div class="text-center">
     
     <div id="app">
-        <Counter></Counter>
-        {{msg}}
+        <button type="button" class="btn btn-info" @@click="sidebarOpened = true">Открыть сайдбар</button> <!--@@click="$refs.sidebar1.show()"-->
+        <template v-if="sidebarOpened">        
+            <Sidebar modal swith-block mode="full" ref="sidebar1" @@close="$root.sidebarOpened = false"></Sidebar>
+        </template>
     </div>
        
 </div>
 
 @section Scripts{
-    <script src="~/js/dist/app.js" asp-append-version="true"></script>
+    <script src="~/dist/js/app.js" asp-append-version="true"></script>
 }
