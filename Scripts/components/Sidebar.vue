@@ -46,11 +46,11 @@
     @Component({ components: {} })
     export default class Sidebar extends Vue {
         //режим отображения сайдбара ("half","full")
-        @Prop({ type: String, default: "half", required: false, validator(val) { return val == SideBarModes.Full || val == SideBarModes.Half; } }) mode: SideBarModes;
+        @Prop({ type: String, default: "half", required: false, validator(val) { return val == SideBarModes.Full || val == SideBarModes.Half; } }) mode!: SideBarModes;
         //модальность сайдбара
-        @Prop({ type: Boolean, default: false, required: false }) modal: Boolean;
+        @Prop({ type: Boolean, default: false, required: false }) modal!: Boolean;
         //блок переключателей (раскрытие сайдбара)
-        @Prop({ type: Boolean, default: false, required: false }) swithBlock: Boolean;
+        @Prop({ type: Boolean, default: false, required: false }) swithBlock!: Boolean;
 
         //внутренне состояние компонента
         isClose: Boolean = false;

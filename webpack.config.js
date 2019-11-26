@@ -2,6 +2,7 @@
 //https://ourtechroom.com/tech/integrating-vuejs-in-aspnetcore-application/
 
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -11,10 +12,11 @@ module.exports = {
     },
     output: {
         // this says : Compiled file goes to [name].js ie. app.js in my case
-        path: __dirname + "/wwwroot/dist/js/",
-        filename: '[name].js'
+        path: __dirname + "/wwwroot/dist/",
+        filename: 'js/[name].js',
+        devtoolModuleFilenameTemplate: '[resource-path]'
     },
-    devtool: 'source-map',
+    devtool: /*'eval-source-map',*/'source-map',
     mode: /*'production'*/'development',
 
     resolve: {
@@ -32,19 +34,46 @@ module.exports = {
                 // don't transform node_modules folder  this folder need not to be compiled and not needed at production mode
                 exclude: /node_modules/,
                 // load this .js file using babel loader so as to make it compactible with any browser
-                loader: 'babel-loader'
+                //loader: 'babel-loader'
+                use: [
+                    'babel-loader',
+                    'style-loader'
+                ]
             },
             {
                 test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=100000'
+                use: [
+                    //{
+                    //    loader: 'url-loader?limit=false'
+                    //},
+                    {
+                        loader: 'file-loader',                        
+                        options: {
+                            outputPath: "images",
+                            publicPath: '/dist/images',
+                            name: '[name].[ext]'
+                        }
+                    }
+                ]
             },
             {
                 // Ask webpack to check: If this file ends with .css, then apply some transforms 
                 test: /\.(s)css$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader'
-                ]
+                use: ExtractTextPlugin.extract({
+                    use: [
+                        {
+                            loader: 'css-loader'
+                            //options: {
+                            //    // включаем CSS модули
+                            //    modules: true
+                            //    // настраиваем генерируемое имя класса
+                            //    //localIdentName: '[local]_[hash:base64:8]'
+                            //}
+                        },
+                        'sass-loader'
+                    ],
+                    fallback: "style-loader"
+                })
             },
             //for vuetify
             //{
@@ -65,7 +94,9 @@ module.exports = {
             //},
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                use: [
+                    'vue-loader'
+                ]
             },
             //for use decorators in a ".ts" files there
             {
@@ -88,6 +119,7 @@ module.exports = {
     //},
     //watch: true,
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new ExtractTextPlugin({ filename: "css/[name].css" })
     ]
 };

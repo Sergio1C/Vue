@@ -3,13 +3,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Styles{     
+    <link rel="stylesheet" href="~/dist/css/app.css" /> 
+}
+
 <div class="text-center">
     
     <div id="app">
-        <button type="button" class="btn btn-info" @@click="sidebarOpened = true">Открыть сайдбар</button> <!--@@click="$refs.sidebar1.show()"-->
+        <button type="button" class="btn btn-info" @@click="sidebarOpened = true;">Открыть сайдбар</button> <!--@@click="$refs.sidebar1.show()"-->
         <template v-if="sidebarOpened">        
-            <Sidebar modal swith-block mode="full" ref="sidebar1" @@close="$root.sidebarOpened = false"></Sidebar>
+            <Sidebar modal swith-block mode="full" ref="sidebar1" @@close="$root.sidebarOpened = false;"></Sidebar>
         </template>
+
+        <Mdd-map @@ready="mddMapReady = true;"></Mdd-map>
+
     </div>
        
 </div>

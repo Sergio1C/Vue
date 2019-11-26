@@ -13,10 +13,10 @@
         @Component
         export default class Counter extends Vue {
 
-            @Prop({ type: Number, default: 100, required: false, validator: function (t: Number) { return t > 0; } }) count;
-
+            @Prop({ type: Number, default: 100, required: false, validator: function (t: Number) { return t > 0; } }) count!: Number;
+           
             increaseCounter(increase: Number): void {
-                this.count = this.count + increase;
+                this.count = +this.count + 1;
             }
 
             get counter(): Number {
